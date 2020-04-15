@@ -123,7 +123,7 @@ jdinac.z <- function(EDGE,classLabel,DataFit,DataPre,zFit,zPre,nsplit=10,nfolds=
 
       yp <- predict(cv.fit,newx=cbind(zPre,denX[-(1:length(y)),]), s="lambda.min",type="response")
       preY <- cbind(preY,yp) 
-      coefs <- which(coef(cv.fit,s="lambda.min")[-1] !=0)
+      coefs <- which(coef(cv.fit,s="lambda.min")[-(1:(1+ncol(zFit)))] !=0)
       vset <- c(vset,coefs)
     
       cLabel <- classLabel[-splitid]        
